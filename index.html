@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valentine's Day</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="gif-container">
+      <img src="./image/first.gif" alt="GIF" />
+    </div>
+    <div class="question">
+      <h1>Will You Be My Valentine?</h1>
+    </div>
+    <div class="buttons">
+      <button id="yesButton">Yes</button>
+      <button id="noButton">No</button>
+    </div>
+
+    <script>
+      // Initialize a counter to keep track of the number of times the "No" button is clicked
+      let noButtonClickCount = 0;
+      let theYesButtonSize = 0;
+
+      // Function to handle the "Yes" button click
+      function handleYesButtonClick() {
+        // Change the GIF source
+        document.querySelector(".gif-container img").src = "./image/sec.gif";
+
+        // Change the text
+        document.querySelector(".question h1").innerText =
+          "Thank you for being my Valentine!";
+
+        // Remove the "Yes" and "No" buttons
+        document.getElementById("yesButton").remove();
+        document.getElementById("noButton").remove();
+
+        // Create a new "Restart" button
+        const restartButton = document.createElement("button");
+        restartButton.innerText = "Restart";
+        restartButton.id = "restartButton";
+
+        // Add event listener to the "Restart" button to reload the page when clicked
+        restartButton.addEventListener("click", function () {
+          location.reload();
+        });
+
+        // Append the "Restart" button to the button container
+        document.querySelector(".buttons").appendChild(restartButton);
+      }
+
+      // Function to handle the "No" button click
+      function handleNoButtonClick() {
+        // Increase the size of the "Yes" button
+        document.getElementById("yesButton").style.fontSize = `${
+          30 + theYesButtonSize
+        }px`;
+
+        // Change the text on the "No" button based on the number of clicks
+        const noButton = document.getElementById("noButton");
+        switch (noButtonClickCount) {
+          case 0:
+            noButton.innerText = "Are you sure?";
+            break;
+          case 1:
+            noButton.innerText = "Really sure?";
+            break;
+          case 2:
+            noButton.innerText = "Are you positive???";
+            break;
+          case 3:
+            noButton.innerText = "Pookie please";
+            break;
+          case 4:
+            noButton.innerText = "Just think about it";
+            break;
+          case 5:
+            noButton.innerText = "If you say no, I'll be very sad";
+            break;
+          case 6:
+            noButton.innerText = "I'll be very very sad";
+            break;
+          case 7:
+            noButton.innerText = "I'll be very very very sad";
+            break;
+          case 8:
+            noButton.innerText = "I'll be very very very very sad";
+            break;
+          case 9:
+            noButton.innerText = "Ok fine, I'll stop asking...";
+            break;
+          case 10:
+            noButton.innerText = "Just kidding, PLEASE SAY YES";
+            break;
+          case 11:
+            noButton.innerText = "I'll be very very very very very sad";
+            break;
+          case 12:
+            noButton.innerText = "You're breaking my heart ;(";
+            break;
+          case 13:
+            noButton.innerText = "Please reconsider";
+            break;
+          case 14:
+            noButton.innerText = "Think of the joy it'll bring";
+            break;
+          case 15:
+            noButton.innerText = "I promise it'll be worth it";
+            break;
+          case 16:
+            noButton.innerText = "Imagine the possibilities";
+            break;
+          case 17:
+            noButton.innerText = "Don't make me beg";
+            break;
+          case 18:
+            noButton.innerText = "I'll be eternally grateful";
+            break;
+          case 19:
+            noButton.innerText = "You'll make my day";
+            break;
+          case 20:
+            noButton.innerText = "Say yes and make me happy";
+            break;
+          default:
+            noButton.innerText = "No";
+            break;
+        }
+
+        // Increment the counter
+        noButtonClickCount++;
+        theYesButtonSize = theYesButtonSize + 20;
+      }
+
+      // Add event listeners to the buttons
+      document
+        .getElementById("yesButton")
+        .addEventListener("click", handleYesButtonClick);
+      document
+        .getElementById("noButton")
+        .addEventListener("click", handleNoButtonClick);
+    </script>
+  </body>
+</html>
